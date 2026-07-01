@@ -100,7 +100,7 @@ export function ResponsivePicture({
       {sources}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={src}
+        src={`${webpDir}/1560/${baseName}.webp`}
         alt={alt}
         className={imgClass}
         style={imgStyle}
