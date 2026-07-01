@@ -1,7 +1,6 @@
 "use client"
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { ResponsivePicture } from "@/components/responsive-picture"
 import { ShieldCheck } from "lucide-react"
 import { GalleryDialog, type GalleryImage } from "@/components/gallery-dialog"
 

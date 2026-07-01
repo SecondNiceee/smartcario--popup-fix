@@ -1,7 +1,6 @@
 "use client"
 
 import { type ReactNode } from "react"
-import { ResponsivePicture } from "@/components/responsive-picture"
 import {
   Dialog,
   DialogContent,

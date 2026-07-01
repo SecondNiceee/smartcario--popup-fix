@@ -28,7 +28,6 @@ export function ContactsSection() {
       className="relative bg-black py-16 md:py-24"
     >
       <ResponsivePicture
-        src="/images/footerBg.png"
         alt=""
         fill
         className="object-cover object-center"

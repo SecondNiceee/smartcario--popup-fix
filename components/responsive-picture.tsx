@@ -19,8 +19,6 @@ import React from "react"
 const BREAKPOINTS = [360, 480, 576, 768, 1024, 1140, 1200, 1440, 1560, 3840] as const
 
 interface ResponsivePictureProps {
-  /** Original image src used as fallback, e.g. "/images/generations.png" */
-  src: string
   alt: string
   /** Base name without extension, e.g. "generations". Defaults to filename from src. */
   name?: string
@@ -41,7 +39,6 @@ interface ResponsivePictureProps {
 }
 
 export function ResponsivePicture({
-  src,
   alt,
   name,
   webpDir = "/images/r",
