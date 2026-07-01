@@ -38,7 +38,11 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50',
+        // Resting state is fully visible (opacity-100). We start hidden and reveal
+        // via a mount-driven transition instead of tw-animate-css keyframes, which
+        // can get "stuck" mid-animation on older browsers. If the transition never
+        // runs, the modal still ends up fully opaque rather than frozen.
+        'fixed inset-0 z-50 bg-black/50 opacity-0 transition-opacity duration-200 ease-out data-[mounted=true]:opacity-100',
         className,
       )}
       {...props}
@@ -54,13 +58,28 @@ function DialogContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
 }) {
+  // Reveal on mount via requestAnimationFrame. This drives a plain CSS transition
+  // (opacity + scale) instead of relying on tw-animate-css keyframe animations,
+  // which can freeze mid-frame on older browsers and leave the modal stuck in a
+  // semi-transparent state. rAF is universally supported, so the modal always
+  // ends up fully visible even if the transition itself is unsupported.
+  const [mounted, setMounted] = React.useState(false)
+  React.useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
+
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay />
+      <DialogOverlay data-mounted={mounted} />
       <DialogPrimitive.Content
         data-slot="dialog-content"
+        data-mounted={mounted}
         className={cn(
-          'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg',
+          'bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',
+          // Mount-driven reveal: start slightly scaled/transparent, settle to fully
+          // visible. Resting/target state is opacity-100 + scale-100.
+          'scale-95 opacity-0 transition-[opacity,transform] duration-200 ease-out data-[mounted=true]:scale-100 data-[mounted=true]:opacity-100',
           className,
         )}
         {...props}
