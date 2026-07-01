@@ -212,7 +212,6 @@ export function CdekOrderDialog({
             <DialogHeader>
             <div className="md:w-[45%] w-[70%] overflow-hidden mx-auto rounded-xl mb-3" style={{ height: 200 }}>
                 <ResponsivePicture              
-                  src="/images/deviceWithCase.png"
                   alt="Прибор СмартКардио® с чехлом"
                   name="deviceWithCase"
                   width={480}

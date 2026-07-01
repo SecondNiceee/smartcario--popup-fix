@@ -140,7 +140,6 @@ export function ReviewsSection() {
           <div className="order-1 hidden lg:block">
             <div className="h-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
               <ResponsivePicture
-                src="/images/for-users.png"
                 alt="Покупатель СмартКардио держит прибор в руке"
                 className="h-full w-full"
                 imgStyle={{ objectPosition: "-53px center" }}
@@ -244,7 +243,6 @@ export function ReviewsSection() {
             <div className="mt-6 block lg:hidden">
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
                 <ResponsivePicture
-                  src="/images/for-users.png"
                   alt="Покупатель СмартКардио держит прибор в руке"
                   className="h-96 w-full"
                   imgStyle={{ objectPosition: "top" }}

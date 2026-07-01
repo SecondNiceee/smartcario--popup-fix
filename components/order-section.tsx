@@ -55,7 +55,6 @@ export function OrderSection() {
         <div className="relative">
           <div className="relative overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200">
             <ResponsivePicture
-              src="/images/for-hospitals.png"
               alt="Консультация врача с пациентом и прибором СмартКардио"
               className="h-auto w-full"
               width={1456}

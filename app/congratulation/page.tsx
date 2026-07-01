@@ -9,7 +9,6 @@ export default function CongratulationPage() {
       {/* Background image — full width/height, darkened */}
       <div className="absolute inset-0">
         <ResponsivePicture
-          src="/images/footerBg.png"
           alt=""
           fill
           fetchPriority="high"

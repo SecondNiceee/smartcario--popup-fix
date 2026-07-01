@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react"
 import useEmblaCarousel from "embla-carousel-react"
-import { ResponsivePicture } from "@/components/responsive-picture"
 import { GalleryDialog, type GalleryImage } from "@/components/gallery-dialog"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { log, logerr, logerr2, logwarn } from 'lib/utils'

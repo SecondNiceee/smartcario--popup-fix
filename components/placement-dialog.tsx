@@ -103,7 +103,6 @@ export function PlacementDialog({ trigger }: { trigger: ReactNode }) {
                     >
                       <div className="relative h-[18rem] w-full sm:h-[24rem]">
                         <ResponsivePicture
-                          src={slide.src}
                           alt={slide.title}
                           fill
                           webpDir="/images/r"
